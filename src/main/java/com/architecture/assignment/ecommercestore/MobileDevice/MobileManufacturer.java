@@ -1,5 +1,6 @@
 package com.architecture.assignment.ecommercestore.MobileDevice;
 
-public class MobileManufacturer
+public enum MobileManufacturer
 {
+	SAMUSNG, APPLE, HUAWEI, HTC, MOTOROLA, NOKIA, XIAOMI, OPPO, LG, SONY
 }
