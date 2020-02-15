@@ -13,7 +13,7 @@ public class MobileSpecification
 
 	private PartnerDealer dealer;
 
-	private long specificationId;
+	private Long specificationId;
 
 	private Double screenSize;
 
@@ -21,13 +21,13 @@ public class MobileSpecification
 
 	private String processor;
 
-	private double memory;
+	private Double memory;
 
-	private double storageCapacity;
+	private Double storageCapacity;
 
-	private boolean isAvailable;
+	private Boolean isAvailable;
 
-	private double price;
+	private Double price;
 
 	private String otherSpecifications;
 
@@ -47,12 +47,12 @@ public class MobileSpecification
 	@Id
 	@GeneratedValue
 	@Column(name = "specification_id")
-	public long getSpecificationId()
+	public Long getSpecificationId()
 	{
 		return specificationId;
 	}
 
-	public void setSpecificationId( long specificationId )
+	public void setSpecificationId( Long specificationId )
 	{
 		this.specificationId = specificationId;
 	}
@@ -104,23 +104,23 @@ public class MobileSpecification
 	}
 
 	@Column(name = "memory")
-	public double getMemory()
+	public Double getMemory()
 	{
 		return memory;
 	}
 
-	public void setMemory( double memory )
+	public void setMemory( Double memory )
 	{
 		this.memory = memory;
 	}
 
 	@Column(name = "capacity")
-	public double getStorageCapacity()
+	public Double getStorageCapacity()
 	{
 		return storageCapacity;
 	}
 
-	public void setStorageCapacity( double storageCapacity )
+	public void setStorageCapacity( Double storageCapacity )
 	{
 		this.storageCapacity = storageCapacity;
 	}
@@ -137,23 +137,23 @@ public class MobileSpecification
 	}
 
 	@Column(name = "is_available")
-	public boolean isAvailable()
+	public Boolean isAvailable()
 	{
 		return isAvailable;
 	}
 
-	public void setAvailable( boolean available )
+	public void setAvailable( Boolean available )
 	{
 		isAvailable = available;
 	}
 
 	@Column(name = "price")
-	public double getPrice()
+	public Double getPrice()
 	{
 		return price;
 	}
 
-	public void setPrice( double price )
+	public void setPrice( Double price )
 	{
 		this.price = price;
 	}

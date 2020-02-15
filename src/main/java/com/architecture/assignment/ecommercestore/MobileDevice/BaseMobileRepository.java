@@ -11,4 +11,6 @@ public interface BaseMobileRepository extends JpaRepository<BaseMobileModel, Lon
 	List<BaseMobileModel> getAllByManufacturer( MobileManufacturer manufacturer );
 
 	List<BaseMobileModel> getAllByModelName( String modelName );
+
+	List<BaseMobileModel> findByModelNameStartsWith( String name );
 }

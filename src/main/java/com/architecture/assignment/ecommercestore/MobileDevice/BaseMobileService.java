@@ -73,4 +73,9 @@ public class BaseMobileService
 		BaseMobileModel model = baseMobileRepository.findById( baseModelId ).get();
 		baseMobileRepository.delete( model );
 	}
+
+	public List<BaseMobileModel> getModelsStartingWithName( String name )
+	{
+		return baseMobileRepository.findByModelNameStartsWith( name );
+	}
 }
