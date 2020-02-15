@@ -34,8 +34,8 @@ public class BaseMobileController
 		baseMobileService.editMobileModel(baseModelId, newModel);
 	}
 
-	public void deleteBakseMobileModel(long baseModelId){
-
+	public void deleteBaseMobileModel(long baseModelId){
+		baseMobileService.deleteMobileModel(baseModelId);
 	}
 
 	@GetMapping("/mobile_model/get_available_manufacturers")

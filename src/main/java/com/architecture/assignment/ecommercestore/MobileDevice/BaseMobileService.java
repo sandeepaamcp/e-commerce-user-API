@@ -14,38 +14,54 @@ public class BaseMobileService
 	@Autowired
 	private BaseMobileRepository baseMobileRepository;
 
-	public BaseMobileModel saveMobileModel( BaseMobileModel baseMobileModel )
+	BaseMobileModel saveMobileModel( BaseMobileModel baseMobileModel )
 	{
 		return baseMobileRepository.save( baseMobileModel );
 	}
 
-	public ResponseEntity<List<MobileManufacturer>> getAllManufacturers()
+	ResponseEntity<List<MobileManufacturer>> getAllManufacturers()
 	{
 		return new ResponseEntity<>( Arrays.asList( MobileManufacturer.values() ), HttpStatus.OK );
 	}
 
-	public void editMobileModel( long baseModelId, BaseMobileModel newModel )
+	void editMobileModel( long baseModelId, BaseMobileModel newModel )
 	{
-		baseMobileRepository.findById( baseModelId ).ifPresent( baseMobileModel -> {
-			if ( !newModel.getModelName().equals( "" ) )
-			{
-				baseMobileModel.setModelName( newModel.getModelName() );
-			}
+		if ( !baseMobileRepository.findById( baseModelId ).isPresent() )
+		{
+			throw new MobileNotFoundException( "The requested mobile with id " + baseModelId + " is not found." );
+		}
+		BaseMobileModel baseMobileModel = baseMobileRepository.findById( baseModelId ).get();
 
-			if ( !newModel.getManufacturer().equals( "" ) )
-			{
-				baseMobileModel.setManufacturer( newModel.getManufacturer() );
-			}
-		} );
+		if ( !newModel.getModelName().equals( "" ) )
+		{
+			baseMobileModel.setModelName( newModel.getModelName() );
+		}
+
+		if ( newModel.getManufacturer()!=null)
+		{
+			baseMobileModel.setManufacturer( newModel.getManufacturer() );
+		}
+		baseMobileRepository.save( baseMobileModel );
 	}
 
-	public List<BaseMobileModel> getAllMobileModels()
+	List<BaseMobileModel> getAllMobileModels()
 	{
 		return baseMobileRepository.findAll();
 	}
 
-	public List<BaseMobileModel> getAllMobileModelsByManufacturerName( MobileManufacturer manufacturer )
+	List<BaseMobileModel> getAllMobileModelsByManufacturerName( MobileManufacturer manufacturer )
 	{
 		return baseMobileRepository.getAllByManufacturer( manufacturer );
+	}
+
+	void deleteMobileModel( long baseModelId )
+	{
+		if ( !baseMobileRepository.findById( baseModelId ).isPresent() )
+		{
+			throw new MobileNotFoundException(
+					"The requested mobile with ID: " + baseModelId + " is not found for deletion" );
+		}
+		BaseMobileModel model = baseMobileRepository.findById( baseModelId ).get();
+		baseMobileRepository.delete( model );
 	}
 }
