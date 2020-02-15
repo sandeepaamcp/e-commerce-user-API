@@ -1,5 +1,6 @@
 package com.architecture.assignment.ecommercestore.MobileDevice;
 
+import com.architecture.assignment.ecommercestore.PartnerDealerShop.PartnerDealer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -9,6 +10,8 @@ import javax.persistence.*;
 public class MobileSpecification
 {
 	private BaseMobileModel mobile;
+
+	private PartnerDealer dealer;
 
 	private long specificationId;
 
@@ -22,11 +25,15 @@ public class MobileSpecification
 
 	private double storageCapacity;
 
+	private boolean isAvailable;
+
+	private double price;
+
 	private String otherSpecifications;
 
 	@ManyToOne
 	@JoinColumn(name = "model_id", nullable = false)
-	@JsonIgnore
+	//	@JsonIgnore
 	public BaseMobileModel getMobile()
 	{
 		return mobile;
@@ -48,6 +55,19 @@ public class MobileSpecification
 	public void setSpecificationId( long specificationId )
 	{
 		this.specificationId = specificationId;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "dealer_id", nullable = false)
+	//	@JsonIgnore
+	public PartnerDealer getDealer()
+	{
+		return dealer;
+	}
+
+	public void setDealer( PartnerDealer dealer )
+	{
+		this.dealer = dealer;
 	}
 
 	@Column(name = "screen_size")
@@ -114,5 +134,27 @@ public class MobileSpecification
 	public void setOtherSpecifications( String otherSpecifications )
 	{
 		this.otherSpecifications = otherSpecifications;
+	}
+
+	@Column(name = "is_available")
+	public boolean isAvailable()
+	{
+		return isAvailable;
+	}
+
+	public void setAvailable( boolean available )
+	{
+		isAvailable = available;
+	}
+
+	@Column(name = "price")
+	public double getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice( double price )
+	{
+		this.price = price;
 	}
 }

@@ -50,7 +50,7 @@ public class BaseMobileModel
 	}
 
 	@OneToMany(mappedBy = "mobile", cascade = CascadeType.REMOVE)
-//	@JsonIgnore
+	@JsonIgnore
 	public List<MobileSpecification> getMobileSpecificationList()
 	{
 		return mobileSpecificationList;

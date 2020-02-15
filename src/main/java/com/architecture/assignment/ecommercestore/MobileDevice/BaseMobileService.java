@@ -14,17 +14,26 @@ public class BaseMobileService
 	@Autowired
 	private BaseMobileRepository baseMobileRepository;
 
-	BaseMobileModel saveMobileModel( BaseMobileModel baseMobileModel )
+	public BaseMobileModel getMobileModel( Long id )
+	{
+		if ( !baseMobileRepository.findById( id ).isPresent() )
+		{
+			throw new MobileNotFoundException();
+		}
+		return baseMobileRepository.findById( id ).get();
+	}
+
+	public BaseMobileModel saveMobileModel( BaseMobileModel baseMobileModel )
 	{
 		return baseMobileRepository.save( baseMobileModel );
 	}
 
-	ResponseEntity<List<MobileManufacturer>> getAllManufacturers()
+	public ResponseEntity<List<MobileManufacturer>> getAllManufacturers()
 	{
 		return new ResponseEntity<>( Arrays.asList( MobileManufacturer.values() ), HttpStatus.OK );
 	}
 
-	void editMobileModel( long baseModelId, BaseMobileModel newModel )
+	public void editMobileModel( long baseModelId, BaseMobileModel newModel )
 	{
 		if ( !baseMobileRepository.findById( baseModelId ).isPresent() )
 		{
@@ -37,24 +46,24 @@ public class BaseMobileService
 			baseMobileModel.setModelName( newModel.getModelName() );
 		}
 
-		if ( newModel.getManufacturer()!=null)
+		if ( newModel.getManufacturer() != null )
 		{
 			baseMobileModel.setManufacturer( newModel.getManufacturer() );
 		}
 		baseMobileRepository.save( baseMobileModel );
 	}
 
-	List<BaseMobileModel> getAllMobileModels()
+	public List<BaseMobileModel> getAllMobileModels()
 	{
 		return baseMobileRepository.findAll();
 	}
 
-	List<BaseMobileModel> getAllMobileModelsByManufacturerName( MobileManufacturer manufacturer )
+	public List<BaseMobileModel> getAllMobileModelsByManufacturerName( MobileManufacturer manufacturer )
 	{
 		return baseMobileRepository.getAllByManufacturer( manufacturer );
 	}
 
-	void deleteMobileModel( long baseModelId )
+	public void deleteMobileModel( long baseModelId )
 	{
 		if ( !baseMobileRepository.findById( baseModelId ).isPresent() )
 		{
