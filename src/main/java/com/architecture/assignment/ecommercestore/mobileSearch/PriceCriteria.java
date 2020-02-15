@@ -1,6 +1,6 @@
-package com.architecture.assignment.ecommercestore.MobileSearch;
+package com.architecture.assignment.ecommercestore.mobileSearch;
 
-import com.architecture.assignment.ecommercestore.MobileDevice.MobileSpecification;
+import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
 
 import java.util.ArrayList;
 import java.util.List;

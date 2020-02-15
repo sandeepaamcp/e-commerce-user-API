@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.PartnerDealerShop;
+package com.architecture.assignment.ecommercestore.partnerDealerShop;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

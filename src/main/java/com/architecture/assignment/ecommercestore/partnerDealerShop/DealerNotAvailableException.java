@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.PartnerDealerShop;
+package com.architecture.assignment.ecommercestore.partnerDealerShop;
 
 public class DealerNotAvailableException extends RuntimeException
 {

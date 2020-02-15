@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.MobileDevice;
+package com.architecture.assignment.ecommercestore.mobileDevice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

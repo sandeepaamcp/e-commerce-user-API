@@ -1,6 +1,6 @@
-package com.architecture.assignment.ecommercestore.PartnerDealerShop;
+package com.architecture.assignment.ecommercestore.partnerDealerShop;
 
-import com.architecture.assignment.ecommercestore.MobileDevice.MobileSpecification;
+import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

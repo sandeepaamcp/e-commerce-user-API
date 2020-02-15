@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.MobileDevice;
+package com.architecture.assignment.ecommercestore.mobileDevice;
 
 public class MobileNotFoundException extends RuntimeException
 {

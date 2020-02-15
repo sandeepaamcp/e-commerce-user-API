@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.MobileDevice;
+package com.architecture.assignment.ecommercestore.mobileDevice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

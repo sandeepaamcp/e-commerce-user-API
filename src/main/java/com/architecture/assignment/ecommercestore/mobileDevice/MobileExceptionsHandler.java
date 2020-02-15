@@ -1,6 +1,5 @@
-package com.architecture.assignment.ecommercestore.PartnerDealerShop;
+package com.architecture.assignment.ecommercestore.mobileDevice;
 
-import com.architecture.assignment.ecommercestore.MobileDevice.MobileNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +9,16 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class DealerExceptionsHandler
+public class MobileExceptionsHandler
 		extends ResponseEntityExceptionHandler
 {
 
 	@ExceptionHandler(value
-			= { DealerNotAvailableException.class })
+			= { MobileNotFoundException.class })
 	protected ResponseEntity<Object> handleConflict(
-			RuntimeException ex, WebRequest request )
-	{
-		String bodyOfResponse = "The mobile dealer is not available.";
-		return handleExceptionInternal( ex, bodyOfResponse,
-				new HttpHeaders(), HttpStatus.NOT_FOUND, request );
+			RuntimeException ex, WebRequest request) {
+		String bodyOfResponse = "The requested mobile is not found.";
+		return handleExceptionInternal(ex, bodyOfResponse,
+				new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 }

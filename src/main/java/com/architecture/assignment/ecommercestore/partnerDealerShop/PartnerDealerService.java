@@ -1,6 +1,6 @@
-package com.architecture.assignment.ecommercestore.PartnerDealerShop;
+package com.architecture.assignment.ecommercestore.partnerDealerShop;
 
-import com.architecture.assignment.ecommercestore.MobileDevice.*;
+import com.architecture.assignment.ecommercestore.mobileDevice.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

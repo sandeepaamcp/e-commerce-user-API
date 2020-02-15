@@ -1,4 +1,4 @@
-package com.architecture.assignment.ecommercestore.MobileSearch;
+package com.architecture.assignment.ecommercestore.mobileSearch;
 
 import java.util.List;
 

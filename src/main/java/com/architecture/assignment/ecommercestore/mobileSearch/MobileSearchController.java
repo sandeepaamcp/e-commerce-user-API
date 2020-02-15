@@ -1,8 +1,8 @@
-package com.architecture.assignment.ecommercestore.MobileSearch;
+package com.architecture.assignment.ecommercestore.mobileSearch;
 
-import com.architecture.assignment.ecommercestore.MobileDevice.BaseMobileModel;
-import com.architecture.assignment.ecommercestore.MobileDevice.MobileManufacturer;
-import com.architecture.assignment.ecommercestore.MobileDevice.MobileSpecification;
+import com.architecture.assignment.ecommercestore.mobileDevice.BaseMobileModel;
+import com.architecture.assignment.ecommercestore.mobileDevice.MobileManufacturer;
+import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
