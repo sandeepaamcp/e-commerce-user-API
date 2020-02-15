@@ -1,19 +1,34 @@
 package com.architecture.assignment.ecommercestore.registeredUser;
 
 import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-
+@Table(name = "user")
 public class User
 {
+	private long userId;
 	private String username;
 	private String email;
 	private String password;
 	private List<MobileSpecification> favouriteMobiles;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "user_id")
+	public long getUserId()
+	{
+		return userId;
+	}
+
+	public void setUserId( long userId )
+	{
+		this.userId = userId;
+	}
 
 	@Column(name = "username")
 	public String getUsername()
@@ -26,6 +41,7 @@ public class User
 		this.username = username;
 	}
 
+	@Column(name = "email", nullable = false)
 	public String getEmail()
 	{
 		return email;
@@ -36,6 +52,7 @@ public class User
 		this.email = email;
 	}
 
+	@Column(name = "password")
 	public String getPassword()
 	{
 		return password;
@@ -46,6 +63,7 @@ public class User
 		this.password = password;
 	}
 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.DETACH)
 	public List<MobileSpecification> getFavouriteMobiles()
 	{
 		return favouriteMobiles;

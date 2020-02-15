@@ -1,6 +1,8 @@
 package com.architecture.assignment.ecommercestore.mobileDevice;
 
 import com.architecture.assignment.ecommercestore.partnerDealerShop.PartnerDealer;
+import com.architecture.assignment.ecommercestore.registeredUser.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -11,6 +13,8 @@ public class MobileSpecification
 	private BaseMobileModel mobile;
 
 	private PartnerDealer dealer;
+
+	private User user;
 
 	private Long specificationId;
 
@@ -62,6 +66,19 @@ public class MobileSpecification
 	public PartnerDealer getDealer()
 	{
 		return dealer;
+	}
+
+	@ManyToMany
+	@JoinColumn(name = "user_id", nullable = false)
+	@JsonIgnore
+	public User getUser()
+	{
+		return user;
+	}
+
+	public void setUser( User user )
+	{
+		this.user = user;
 	}
 
 	public void setDealer( PartnerDealer dealer )
@@ -156,4 +173,5 @@ public class MobileSpecification
 	{
 		this.price = price;
 	}
+
 }
