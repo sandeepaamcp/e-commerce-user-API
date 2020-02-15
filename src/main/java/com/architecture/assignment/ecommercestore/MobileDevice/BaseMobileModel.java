@@ -1,6 +1,9 @@
 package com.architecture.assignment.ecommercestore.MobileDevice;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "mobile_model")
@@ -9,10 +12,11 @@ public class BaseMobileModel
 	private long modelId;
 	private String modelName;
 	private MobileManufacturer manufacturer;
+	private List<MobileSpecification> mobileSpecificationList;
 
 	@Id
 	@GeneratedValue
-	@Column(name="mobile_id")
+	@Column(name = "model_id")
 	public long getModelId()
 	{
 		return modelId;
@@ -43,5 +47,18 @@ public class BaseMobileModel
 	public void setManufacturer( MobileManufacturer manufacturer )
 	{
 		this.manufacturer = manufacturer;
+	}
+
+	@OneToMany(mappedBy = "mobile", cascade = CascadeType.REMOVE)
+//	@JsonIgnore
+	public List<MobileSpecification> getMobileSpecificationList()
+	{
+		return mobileSpecificationList;
+	}
+
+	public void setMobileSpecificationList(
+			List<MobileSpecification> mobileSpecificationList )
+	{
+		this.mobileSpecificationList = mobileSpecificationList;
 	}
 }

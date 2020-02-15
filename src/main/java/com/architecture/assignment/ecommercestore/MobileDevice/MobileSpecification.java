@@ -1,8 +1,13 @@
 package com.architecture.assignment.ecommercestore.MobileDevice;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "mobile_specification")
 public class MobileSpecification
 {
-
 	private BaseMobileModel mobile;
 
 	private long specificationId;
@@ -19,6 +24,9 @@ public class MobileSpecification
 
 	private String otherSpecifications;
 
+	@ManyToOne
+	@JoinColumn(name = "model_id", nullable = false)
+	@JsonIgnore
 	public BaseMobileModel getMobile()
 	{
 		return mobile;
@@ -29,6 +37,20 @@ public class MobileSpecification
 		this.mobile = mobile;
 	}
 
+	@Id
+	@GeneratedValue
+	@Column(name = "specification_id")
+	public long getSpecificationId()
+	{
+		return specificationId;
+	}
+
+	public void setSpecificationId( long specificationId )
+	{
+		this.specificationId = specificationId;
+	}
+
+	@Column(name = "screen_size")
 	public Double getScreenSize()
 	{
 		return screenSize;
@@ -39,6 +61,7 @@ public class MobileSpecification
 		this.screenSize = screenSize;
 	}
 
+	@Column(name = "colour")
 	public String getColour()
 	{
 		return colour;
@@ -49,6 +72,7 @@ public class MobileSpecification
 		this.colour = colour;
 	}
 
+	@Column(name = "processor")
 	public String getProcessor()
 	{
 		return processor;
@@ -59,6 +83,7 @@ public class MobileSpecification
 		this.processor = processor;
 	}
 
+	@Column(name = "memory")
 	public double getMemory()
 	{
 		return memory;
@@ -69,6 +94,7 @@ public class MobileSpecification
 		this.memory = memory;
 	}
 
+	@Column(name = "capacity")
 	public double getStorageCapacity()
 	{
 		return storageCapacity;
@@ -79,6 +105,7 @@ public class MobileSpecification
 		this.storageCapacity = storageCapacity;
 	}
 
+	@Column(name = "other_specs")
 	public String getOtherSpecifications()
 	{
 		return otherSpecifications;

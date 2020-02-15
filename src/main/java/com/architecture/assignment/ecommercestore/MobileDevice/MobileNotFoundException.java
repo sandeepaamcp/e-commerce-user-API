@@ -6,4 +6,7 @@ public class MobileNotFoundException extends RuntimeException
 	{
 		super( s );
 	}
+	public MobileNotFoundException(){
+		super();
+	}
 }
