@@ -15,7 +15,7 @@ public class User
 	private String username;
 	private String email;
 	private String password;
-	private List<MobileSpecification> favouriteMobiles;
+	private List<UserFavMobiles> favMobiles;
 
 	@Id
 	@GeneratedValue
@@ -63,15 +63,15 @@ public class User
 		this.password = password;
 	}
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.DETACH)
-	public List<MobileSpecification> getFavouriteMobiles()
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	public List<UserFavMobiles> getFavMobiles()
 	{
-		return favouriteMobiles;
+		return favMobiles;
 	}
 
-	public void setFavouriteMobiles(
-			List<MobileSpecification> favouriteMobiles )
+	public void setFavMobiles(
+			List<UserFavMobiles> favMobiles )
 	{
-		this.favouriteMobiles = favouriteMobiles;
+		this.favMobiles = favMobiles;
 	}
 }

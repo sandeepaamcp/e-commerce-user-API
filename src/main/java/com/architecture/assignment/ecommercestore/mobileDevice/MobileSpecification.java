@@ -2,9 +2,11 @@ package com.architecture.assignment.ecommercestore.mobileDevice;
 
 import com.architecture.assignment.ecommercestore.partnerDealerShop.PartnerDealer;
 import com.architecture.assignment.ecommercestore.registeredUser.User;
+import com.architecture.assignment.ecommercestore.registeredUser.UserFavMobiles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "mobile_specification")
@@ -14,7 +16,7 @@ public class MobileSpecification
 
 	private PartnerDealer dealer;
 
-	private User user;
+	private List<UserFavMobiles> favMobiles;
 
 	private Long specificationId;
 
@@ -60,25 +62,25 @@ public class MobileSpecification
 		this.specificationId = specificationId;
 	}
 
+	@OneToMany(mappedBy = "mobileSpecification", cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	public List<UserFavMobiles> getFavMobiles()
+	{
+		return favMobiles;
+	}
+
+	public void setFavMobiles(
+			List<UserFavMobiles> favMobiles )
+	{
+		this.favMobiles = favMobiles;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "dealer_id", nullable = false)
 	//	@JsonIgnore
 	public PartnerDealer getDealer()
 	{
 		return dealer;
-	}
-
-	@ManyToMany
-	@JoinColumn(name = "user_id", nullable = false)
-	@JsonIgnore
-	public User getUser()
-	{
-		return user;
-	}
-
-	public void setUser( User user )
-	{
-		this.user = user;
 	}
 
 	public void setDealer( PartnerDealer dealer )

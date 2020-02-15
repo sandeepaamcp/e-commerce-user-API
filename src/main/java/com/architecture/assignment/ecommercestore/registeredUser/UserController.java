@@ -60,9 +60,9 @@ public class UserController
 		userService.removeUser( userId );
 	}
 
-	@PostMapping("/user/add_new_favourite_mobile")
-	public void addNewFavouriteMobile( @RequestParam Long userId, @RequestParam Long mobileSpecificationId )
-	{
-		userService.addNewFavouriteMobile( userId, mobileSpecificationId );
-	}
+//	@PostMapping("/user/add_new_favourite_mobile")
+//	public void addNewFavouriteMobile( @RequestParam Long userId, @RequestParam Long mobileSpecificationId )
+//	{
+//		userService.addNewFavouriteMobile( userId, mobileSpecificationId );
+//	}
 }

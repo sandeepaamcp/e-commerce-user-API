@@ -12,6 +12,15 @@ public class MobileSpecificationService
 	@Autowired
 	private BaseMobileRepository baseMobileRepository;
 
+	public MobileSpecification getMobileSpec( long mobileSpecId )
+	{
+		if ( !specificationRepository.findById( mobileSpecId ).isPresent() )
+		{
+			throw new MobileNotFoundException();
+		}
+		return specificationRepository.findById( mobileSpecId ).get();
+	}
+
 	public MobileSpecification addNewMobileSpec( long baseMobileModelId, MobileSpecification mobileSpecification )
 	{
 		if ( baseMobileRepository.findById( baseMobileModelId ).isPresent() )
