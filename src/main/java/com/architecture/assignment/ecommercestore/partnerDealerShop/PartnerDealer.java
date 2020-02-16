@@ -11,6 +11,8 @@ import java.util.List;
 public class PartnerDealer
 {
 	private long dealerId;
+	private String dealerMail;
+	private String dealerPassword;
 	private String address;
 	private String contactNo;
 	private List<MobileSpecification> mobileSpecificationList;
@@ -61,5 +63,28 @@ public class PartnerDealer
 			List<MobileSpecification> mobileSpecificationList )
 	{
 		this.mobileSpecificationList = mobileSpecificationList;
+	}
+
+	@Column(name = "dealer_mail", unique = true, nullable = false)
+	public String getDealerMail()
+	{
+		return dealerMail;
+	}
+
+	public void setDealerMail( String dealerMail )
+	{
+		this.dealerMail = dealerMail;
+	}
+
+	@Column(name = "dealer_password")
+	@JsonIgnore
+	public String getDealerPassword()
+	{
+		return dealerPassword;
+	}
+
+	public void setDealerPassword( String dealerPassword )
+	{
+		this.dealerPassword = dealerPassword;
 	}
 }

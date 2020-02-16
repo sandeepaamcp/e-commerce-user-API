@@ -1,0 +1,17 @@
+version: "3"
+services:
+  ecommerce_store:
+    image: ecommerce_store:latest
+    network_mode: "host"
+    container_name: ecommerce_store
+    expose:
+      - 9001
+    ports:
+      - 9001:9000
+    restart: unless-stopped
+#    depends_on:
+#      - postgres
+#    links:
+#      - postgres
+volumes:
+  mysql-data:

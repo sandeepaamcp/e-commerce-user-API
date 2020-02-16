@@ -14,32 +14,38 @@ public class BaseMobileController
 	private BaseMobileService baseMobileService;
 
 	@GetMapping("/mobile_model/get_all_models")
-	public List<BaseMobileModel> getAllMobileModels(){
+	public List<BaseMobileModel> getAllMobileModels()
+	{
 		return baseMobileService.getAllMobileModels();
 	}
 
 	@GetMapping("/mobile_model/get_all_models_by_manufacturer")
-	public List<BaseMobileModel> getAllMobileModelsByManufacturer(@RequestParam MobileManufacturer manufacturer){
-		return baseMobileService.getAllMobileModelsByManufacturerName(manufacturer);
+	public List<BaseMobileModel> getAllMobileModelsByManufacturer( @RequestParam MobileManufacturer manufacturer )
+	{
+		return baseMobileService.getAllMobileModelsByManufacturerName( manufacturer );
 	}
 
 	@PostMapping("/mobile_model/add_new")
 	public BaseMobileModel addNewBaseMobileModel( @Valid @RequestBody BaseMobileModel baseMobileModel )
 	{
-		return baseMobileService.saveMobileModel(baseMobileModel);
+		return baseMobileService.saveMobileModel( baseMobileModel );
 	}
 
 	@PutMapping("/mobile_model/edit_model")
-	public void editBaseMobileModel(long baseModelId, BaseMobileModel newModel){
-		baseMobileService.editMobileModel(baseModelId, newModel);
+	public void editBaseMobileModel( @RequestParam long baseModelId, @Valid @RequestBody BaseMobileModel newModel )
+	{
+		baseMobileService.editMobileModel( baseModelId, newModel );
 	}
 
-	public void deleteBaseMobileModel(long baseModelId){
-		baseMobileService.deleteMobileModel(baseModelId);
+	@DeleteMapping("/mobile_model/delete_model")
+	public void deleteBaseMobileModel( @RequestParam long baseModelId )
+	{
+		baseMobileService.deleteMobileModel( baseModelId );
 	}
 
 	@GetMapping("/mobile_model/get_available_manufacturers")
-	public ResponseEntity<List<MobileManufacturer>> getAllMobileManufacturers(){
+	public ResponseEntity<List<MobileManufacturer>> getAllMobileManufacturers()
+	{
 		return baseMobileService.getAllManufacturers();
 	}
 }

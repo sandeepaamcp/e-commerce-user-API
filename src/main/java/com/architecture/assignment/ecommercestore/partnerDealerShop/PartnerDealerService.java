@@ -79,4 +79,9 @@ public class PartnerDealerService
 	{
 		return getDealerById( dealerId ).getMobileSpecificationList();
 	}
+
+	public PartnerDealer getDealerByEmail( String email )
+	{
+		return partnerDealerRepository.findByDealerMail( email );
+	}
 }

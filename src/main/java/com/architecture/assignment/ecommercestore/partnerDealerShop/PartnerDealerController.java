@@ -3,6 +3,7 @@ package com.architecture.assignment.ecommercestore.partnerDealerShop;
 import com.architecture.assignment.ecommercestore.mobileDevice.BaseMobileModel;
 import com.architecture.assignment.ecommercestore.mobileDevice.MobileManufacturer;
 import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
+import com.architecture.assignment.ecommercestore.registeredUser.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,12 @@ public class PartnerDealerController
 
 	@Autowired
 	PartnerDealerService partnerDealerService;
+
+	@GetMapping("/dealer/get_dealer_by_email")
+	public PartnerDealer getDealerByMail( @RequestParam("email") String email )
+	{
+		return partnerDealerService.getDealerByEmail( email );
+	}
 
 	@PostMapping("/dealer/add_new_dealer")
 	public PartnerDealer addNewDealerShop( @RequestBody @Valid PartnerDealer dealer )
