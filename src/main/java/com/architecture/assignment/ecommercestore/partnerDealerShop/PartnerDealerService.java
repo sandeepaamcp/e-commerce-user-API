@@ -82,6 +82,21 @@ public class PartnerDealerService
 
 	public PartnerDealer getDealerByEmail( String email )
 	{
-		return partnerDealerRepository.findByDealerMail( email );
+		return partnerDealerRepository.findByDealerEmail( email );
+	}
+
+	public void editDealer( long dealerId, PartnerDealer newDealerData )
+	{
+		if ( !partnerDealerRepository.findById( dealerId ).isPresent() )
+		{
+			throw new DealerNotAvailableException();
+		}
+		newDealerData.setDealerId( dealerId );
+		partnerDealerRepository.save( newDealerData );
+	}
+
+	public void deleteDealer( long dealerId )
+	{
+		partnerDealerRepository.deleteById( dealerId );
 	}
 }

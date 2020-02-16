@@ -74,4 +74,16 @@ public class PartnerDealerController
 		partnerDealerService.deleteMobileSpec( mobileSpecId );
 	}
 
+	@PutMapping("/dealer/edit_mobile_dealer")
+	public void editDealer( @RequestParam long dealerId, @RequestBody PartnerDealer newDealerData )
+	{
+		partnerDealerService.editDealer( dealerId, newDealerData );
+	}
+
+	@DeleteMapping("/dealer/remove_mobile_dealer")
+	public void editDealer( @RequestParam long dealerId )
+	{
+		partnerDealerService.deleteDealer( dealerId );
+	}
+
 }

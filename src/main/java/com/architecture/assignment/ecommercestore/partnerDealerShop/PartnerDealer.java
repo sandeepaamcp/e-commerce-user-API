@@ -11,7 +11,8 @@ import java.util.List;
 public class PartnerDealer
 {
 	private long dealerId;
-	private String dealerMail;
+	private String dealerName;
+	private String dealerEmail;
 	private String dealerPassword;
 	private String address;
 	private String contactNo;
@@ -66,14 +67,14 @@ public class PartnerDealer
 	}
 
 	@Column(name = "dealer_mail", unique = true, nullable = false)
-	public String getDealerMail()
+	public String getDealerEmail()
 	{
-		return dealerMail;
+		return dealerEmail;
 	}
 
-	public void setDealerMail( String dealerMail )
+	public void setDealerEmail( String dealerEmail )
 	{
-		this.dealerMail = dealerMail;
+		this.dealerEmail = dealerEmail;
 	}
 
 	@Column(name = "dealer_password")
@@ -86,5 +87,16 @@ public class PartnerDealer
 	public void setDealerPassword( String dealerPassword )
 	{
 		this.dealerPassword = dealerPassword;
+	}
+
+	@Column(name = "dealer_name")
+	public String getDealerName()
+	{
+		return dealerName;
+	}
+
+	public void setDealerName( String dealerName )
+	{
+		this.dealerName = dealerName;
 	}
 }
