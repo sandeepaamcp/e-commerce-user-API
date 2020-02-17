@@ -36,6 +36,10 @@ public class MobileSpecification
 
 	private String otherSpecifications;
 
+	private String imageUrl;
+
+	private String camera;
+
 	@ManyToOne
 	@JoinColumn(name = "model_id", nullable = false)
 	//	@JsonIgnore
@@ -176,4 +180,25 @@ public class MobileSpecification
 		this.price = price;
 	}
 
+	@Column(name = "image_url")
+	public String getImageUrl()
+	{
+		return imageUrl;
+	}
+
+	public void setImageUrl( String imageUrl )
+	{
+		this.imageUrl = imageUrl;
+	}
+
+	@Column(name = "camera")
+	public String getCamera()
+	{
+		return camera;
+	}
+
+	public void setCamera( String camera )
+	{
+		this.camera = camera;
+	}
 }

@@ -1,5 +1,6 @@
 package com.architecture.assignment.ecommercestore.registeredUser;
 
+import com.architecture.assignment.ecommercestore.mobileDevice.MobileSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,8 @@ public class UserFavMobilesController
 		return favMobilesService.getFavUsersForMobileSpec( mobileSpecId );
 	}
 
-	@DeleteMapping("/user_fav_mobiles/remove_relation")
+	//TODO: find the issue of CORS blocking DELETE mapping OPTIONS request
+	@PostMapping("/user_fav_mobiles/remove_relation")
 	public void deleteUserFavMobile( @RequestParam Long favMobileRelationId )
 	{
 		favMobilesService.removeFavMobileRelation( favMobileRelationId );

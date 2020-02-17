@@ -14,6 +14,9 @@ public class MobileSearchService
 	@Autowired
 	BaseMobileService baseMobileService;
 
+	@Autowired
+	MobileSpecificationService mobileSpecificationService;
+
 	public List<MobileSpecification> getMobilesByManufacturer( MobileManufacturer manufacturer )
 	{
 		List<MobileSpecification> mobileSpecificationList = new ArrayList<>();
@@ -40,5 +43,26 @@ public class MobileSearchService
 	public ResponseEntity<List<MobileManufacturer>> getAllManufacturers()
 	{
 		return baseMobileService.getAllManufacturers();
+	}
+
+	public List<MobileSpecification> getSetOfMobiles()
+	{
+		List<MobileSpecification> mobilesList = new ArrayList<>();
+		List<MobileManufacturer> manufacturers = getAllManufacturers().getBody();
+		for ( MobileManufacturer manufacturer : manufacturers )
+		{
+			List<BaseMobileModel> models = getBaseModelsByManufacturer( manufacturer );
+			for ( BaseMobileModel model : models )
+			{
+				model.getMobileSpecificationList().stream().forEach( specification -> {
+					mobilesList.add( specification );
+				} );
+				if ( mobilesList.size() > 20 )
+				{
+					return mobilesList;
+				}
+			}
+		}
+		return mobilesList;
 	}
 }

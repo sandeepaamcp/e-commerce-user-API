@@ -41,7 +41,7 @@ public class UserFavMobiles
 
 	@ManyToOne
 	@JoinColumn(name = "specification_id")
-	@JsonIgnore
+//	@JsonIgnore
 	public MobileSpecification getMobileSpecification()
 	{
 		return mobileSpecification;

@@ -39,6 +39,12 @@ public class MobileSearchController
 				.filter( mobileSearchService.getMobilesByManufacturer( manufacturer ) );
 	}
 
+	@GetMapping("/mobile_search/get_set_of_mobiles")
+	public List<MobileSpecification> getMobilesByManufacturerWithPriceCriteria()
+	{
+		return mobileSearchService.getSetOfMobiles() ;
+	}
+
 	@GetMapping("/mobile_search/get_mobiles_by_keyword")
 	public List<MobileSpecification> getMobilesByKeyword( @RequestParam String keyword )
 	{

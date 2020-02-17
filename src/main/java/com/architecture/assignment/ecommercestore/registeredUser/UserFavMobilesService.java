@@ -32,6 +32,7 @@ public class UserFavMobilesService
 	public List<UserFavMobiles> getFavMobilesByUser( Long userId )
 	{
 		User user = userService.getUser( userId );
+		List<UserFavMobiles> favMobiles = favMobilesRepository.findAllByUser( user );
 		return favMobilesRepository.findAllByUser( user );
 	}
 
